@@ -118,7 +118,7 @@ function Login() {
                 <Button 
                   variant="dark" 
                   className="w-100 mb-2" 
-                  href="http://localhost:5000/api/auth/github"
+                  // href="http://localhost:5000/api/auth/github"
                 >
                   <i className="bi bi-github me-2"></i>
                   Sign in with GitHub
