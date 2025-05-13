@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Form, Button, Badge, Image } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Form, Button, Badge} from 'react-bootstrap';
+import {useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';

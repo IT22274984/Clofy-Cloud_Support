@@ -8,7 +8,7 @@ import { api } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 
 function SubmitIncident() {
-  const [showModal, setShowModal] = useState(false);
+  const [ setShowModal] = useState(false);
   const [showReadyModal, setShowReadyModal] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -41,7 +41,7 @@ function SubmitIncident() {
   const [currentStep, setCurrentStep] = useState(1);
   
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const {  } = useAuth();
   const tagInputRef = useRef(null);
   
   // Reset form fields when type changes
@@ -232,12 +232,12 @@ function SubmitIncident() {
       setOptions([...options, '']);
     }
   };
-  const removeOption = (index) => {
-    if (options.length > 2) {
-      const newOptions = options.filter((_, i) => i !== index);
-      setOptions(newOptions);
-    }
-  };
+  // const removeOption = (index) => {
+  //   if (options.length > 2) {
+  //     const newOptions = options.filter((_, i) => i !== index);
+  //     setOptions(newOptions);
+  //   }
+  // };
   
   // Render different forms based on type
   const renderFormFields = () => {

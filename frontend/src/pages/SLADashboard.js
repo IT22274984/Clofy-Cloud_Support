@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Chart from 'chart.js/auto';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';

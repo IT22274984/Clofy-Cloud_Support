@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { Container, Row, Col, Card, Button, Table, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Table } from 'react-bootstrap';
 import Chart from 'chart.js/auto';
 import Footer from '../components/Footer';
 // Add these imports
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 function AdminModeration() {
@@ -34,66 +34,66 @@ function AdminModeration() {
       }
     });
     
-    const ticketsChart = new Chart(ticketsChartRef.current, {
-      type: 'line',
-      data: {
-        labels: ['Week1', 'Week2', 'Week3', 'Week4'],
-        datasets: [{
-          label: 'Tickets',
-          data: [30, 40, 20, 60],
-          borderColor: '#3b82f6',
-          tension: 0.1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          }
-        }
-      }
-    });
+    // const ticketsChart = new Chart(ticketsChartRef.current, {
+    //   type: 'line',
+    //   data: {
+    //     labels: ['Week1', 'Week2', 'Week3', 'Week4'],
+    //     datasets: [{
+    //       label: 'Tickets',
+    //       data: [30, 40, 20, 60],
+    //       borderColor: '#3b82f6',
+    //       tension: 0.1
+    //     }]
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: 'top',
+    //       }
+    //     }
+    //   }
+    // });
     
-    const creditsChart = new Chart(creditsChartRef.current, {
-      type: 'doughnut',
-      data: {
-        labels: ['Used', 'Remaining'],
-        datasets: [{
-          data: [400, 600],
-          backgroundColor: ['#3b82f6', '#e5e7eb']
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          }
-        }
-      }
-    });
+    // const creditsChart = new Chart(creditsChartRef.current, {
+    //   type: 'doughnut',
+    //   data: {
+    //     labels: ['Used', 'Remaining'],
+    //     datasets: [{
+    //       data: [400, 600],
+    //       backgroundColor: ['#3b82f6', '#e5e7eb']
+    //     }]
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: 'top',
+    //       }
+    //     }
+    //   }
+    // });
     
-    const healthChart = new Chart(healthChartRef.current, {
-      type: 'line',
-      data: {
-        labels: ['0h', '6h', '12h', '18h', '24h'],
-        datasets: [{
-          label: 'Latency(ms)',
-          data: [110, 120, 115, 130, 125],
-          borderColor: '#3b82f6',
-          tension: 0.1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          }
-        }
-      }
-    });
+    // const healthChart = new Chart(healthChartRef.current, {
+    //   type: 'line',
+    //   data: {
+    //     labels: ['0h', '6h', '12h', '18h', '24h'],
+    //     datasets: [{
+    //       label: 'Latency(ms)',
+    //       data: [110, 120, 115, 130, 125],
+    //       borderColor: '#3b82f6',
+    //       tension: 0.1
+    //     }]
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: 'top',
+    //       }
+    //     }
+    //   }
+    // });
     
     // Cleanup function
     return () => {

@@ -8,7 +8,7 @@ import { api } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 
 function MyQueries() {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter] = useState('all');
   const [incidents, setIncidents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

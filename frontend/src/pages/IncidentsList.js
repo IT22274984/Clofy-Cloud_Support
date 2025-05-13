@@ -23,7 +23,7 @@ function IncidentsList() {
   const [loadingComments, setLoadingComments] = useState(false);
   const [showPollModal, setShowPollModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [votingLoading, setVotingLoading] = useState(false);
+  const [votingLoading] = useState(false);
   const { currentUser } = useAuth();
   
   useEffect(() => {
@@ -207,43 +207,43 @@ function IncidentsList() {
   };
   
   // Handle upvoting an incident
-  const handleUpvote = async (incidentId, e) => {
-    e.preventDefault(); // Prevent navigation
+  // const handleUpvote = async (incidentId, e) => {
+  //   e.preventDefault(); // Prevent navigation
     
-    if (!currentUser) {
-      // Redirect to login or show login modal
-      return;
-    }
+  //   if (!currentUser) {
+  //     // Redirect to login or show login modal
+  //     return;
+  //   }
     
-    try {
-      const response = await api.incidents.upvote(incidentId);
+  //   try {
+  //     const response = await api.incidents.upvote(incidentId);
       
-      if (response && response.success) {
-        // Update the incidents list with the new vote count
-        const updatedIncidents = incidents.map(incident => {
-          if (incident._id === incidentId) {
-            return {
-              ...incident,
-              votes: (incident.votes || 0) + 1,
-              hasVoted: true
-            };
-          }
-          return incident;
-        });
+  //     if (response && response.success) {
+  //       // Update the incidents list with the new vote count
+  //       const updatedIncidents = incidents.map(incident => {
+  //         if (incident._id === incidentId) {
+  //           return {
+  //             ...incident,
+  //             votes: (incident.votes || 0) + 1,
+  //             hasVoted: true
+  //           };
+  //         }
+  //         return incident;
+  //       });
         
-        setIncidents(updatedIncidents);
-      }
-    } catch (err) {
-      console.error('Error upvoting:', err);
-    }
-  };
+  //       setIncidents(updatedIncidents);
+  //     }
+  //   } catch (err) {
+  //     console.error('Error upvoting:', err);
+  //   }
+  // };
   
   // Handle opening poll voting modal
-  const handleOpenPollVoting = (incident) => {
-    setCurrentIncident(incident);
-    setSelectedOption(null);
-    setShowPollModal(true);
-  };
+  // const handleOpenPollVoting = (incident) => {
+  //   setCurrentIncident(incident);
+  //   setSelectedOption(null);
+  //   setShowPollModal(true);
+  // };
   
   // Handle submitting a poll vote
   // Handle removing a poll vote
