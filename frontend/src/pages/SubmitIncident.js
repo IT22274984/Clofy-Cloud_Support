@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import { api } from '../services/api';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 
 function SubmitIncident() {
   const [ setShowModal] = useState(false);
@@ -41,7 +41,7 @@ function SubmitIncident() {
   const [currentStep, setCurrentStep] = useState(1);
   
   const navigate = useNavigate();
-  const {  } = useAuth();
+  // const {  } = useAuth();
   const tagInputRef = useRef(null);
   
   // Reset form fields when type changes

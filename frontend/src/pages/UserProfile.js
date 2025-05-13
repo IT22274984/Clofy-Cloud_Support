@@ -53,56 +53,76 @@ function UserProfile() {
   
   // Load user data when component mounts
   useEffect(() => {
-    if (currentUser) {
-      setFormData({
-        name: currentUser.name || '',
-        email: currentUser.email || '',
-        bio: currentUser.bio || '',
-        company: currentUser.company || '',
-        location: currentUser.location || '',
-        website: currentUser.website || '',
-        avatar: currentUser.avatar || ''
-      });
+  if (currentUser) {
+    setFormData({
+      name: currentUser.name || '',
+      email: currentUser.email || '',
+      bio: currentUser.bio || '',
+      company: currentUser.company || '',
+      location: currentUser.location || '',
+      website: currentUser.website || '',
+      avatar: currentUser.avatar || ''
+    });
+    
+    // Move the function inside
+    const fetchUserPosts = async () => {
+      if (!currentUser) return;
       
-      // Fetch user posts if on relevant tabs
-      if (['posts', 'activity'].includes(activeTab)) {
-        fetchUserPosts();
+      try {
+        setLoading(true);
+        const response = await api.incidents.getUserIncidents(currentUser._id || currentUser.id);
+        
+        if (response && response.success) {
+          setUserPosts(response.data || []);
+        } else {
+          console.error('Failed to fetch user posts');
+        }
+      } catch (err) {
+        console.error('Error fetching user posts:', err);
+      } finally {
+        setLoading(false);
       }
+    };
+    
+    // Fetch user posts if on relevant tabs
+    if (['posts', 'activity'].includes(activeTab)) {
+      fetchUserPosts();
     }
-  }, [currentUser, activeTab]);
+  }
+}, [currentUser, activeTab]);
   
   // Fetch user posts
-  const fetchUserPosts = async () => {
-    if (!currentUser) return;
+  // const fetchUserPosts = async () => {
+  //   if (!currentUser) return;
     
-    try {
-      setLoading(true);
-      // Use the API service to fetch user posts with the correct user ID
-      const response = await api.incidents.getUserIncidents(currentUser._id || currentUser.id);
+  //   try {
+  //     setLoading(true);
+  //     // Use the API service to fetch user posts with the correct user ID
+  //     const response = await api.incidents.getUserIncidents(currentUser._id || currentUser.id);
       
-      if (response && response.success) {
-        setUserPosts(response.data || []);
-      } else {
-        console.error('Failed to fetch user posts');
-      }
-    } catch (err) {
-      console.error('Error fetching user posts:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     if (response && response.success) {
+  //       setUserPosts(response.data || []);
+  //     } else {
+  //       console.error('Failed to fetch user posts');
+  //     }
+  //   } catch (err) {
+  //     console.error('Error fetching user posts:', err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   
     // Handle avatar selection
-    const handleAvatarSelect = (avatar) => {
-      setSelectedAvatar(avatar);
-      setFormData(prev => ({
-        ...prev,
-        avatar: `/Avatars/${avatar}`
-      }));
+    // const handleAvatarSelect = (avatar) => {
+    //   setSelectedAvatar(avatar);
+    //   setFormData(prev => ({
+    //     ...prev,
+    //     avatar: `/Avatars/${avatar}`
+    //   }));
       
-      setAvatarPreview(`/Avatars/${avatar}`);
-      setShowAvatarModal(false);
-    };
+    //   setAvatarPreview(`/Avatars/${avatar}`);
+    //   setShowAvatarModal(false);
+    // };
 
   // Handle form input changes
   const handleInputChange = (e) => {
